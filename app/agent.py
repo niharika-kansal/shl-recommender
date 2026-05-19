@@ -18,7 +18,6 @@ from typing import Any
 
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -92,7 +91,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv(BASE_DIR / ".env")
-api_key = os.getenv("GOOGLE_API_KEY")
+api_key = os.getenv("GROQ_API_KEY")
 
 # ── Retriever ─────────────────────────────────────────────────────────────────
 
