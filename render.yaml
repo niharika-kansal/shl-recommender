@@ -1,0 +1,24 @@
+# render.yaml
+# Deploy FastAPI service on Render (free tier)
+#
+# Steps:
+# 1. Go to https://render.com → New → Web Service
+# 2. Connect your GitHub repo: niharika-kansal/shl-recommender
+# 3. Render auto-detects this file
+# 4. Add environment variable: GROQ_API_KEY = your_key
+# 5. Deploy!
+
+services:
+  - type: web
+    name: shl-recommender
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "1"
